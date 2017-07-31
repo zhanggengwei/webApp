@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.UserInfo.Entity.UserInfo">
+    <!-- 查询全部用户 -->
+    <!--<select id="queryUsers" resultType="com.UserInfo.Entity.UserInfoEntity">-->
+        <!--select * from User_Info-->
+    <!--</select>-->
+    <select id="searchUserInfoById" resultType="com.UserInfo.Entity.UserInfoEntity" parameterType="int">
+    select * From User_Info Where id=#{id}
+    </select>
+    <select id="searchUserInfoByPhone" resultType="com.UserInfo.Entity.UserInfoEntity" parameterType="String">
+        select * From User_Info Where phone= #{phone}
+    </select>
+    <insert id="insertUser" parameterType="com.UserInfo.Entity.UserInfoEntity" useGeneratedKeys ="true" keyProperty = "id">
+        insert into User_Info(nickName,passWord,region,phone,token)
+        VALUES (#{nickName},#{passWord},#{region},#{phone},#{token})
+    </insert>
+</mapper>
